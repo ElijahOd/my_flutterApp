@@ -82,8 +82,8 @@ class MyApp extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            Image.asset(
-              'images/lake.jpg',
+            Image.network(
+              'https://raw.githubusercontent.com/flutter/website/main/examples/layout/lakes/step5/images/lake.jpg',
               width: 600,
               height: 240,
               fit: BoxFit.cover,
