@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget titleSection = Container(
-      padding: const EdgeInsets.all(32),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
           Expanded(
@@ -22,19 +22,17 @@ class MyApp extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 /*2*/
-                Container(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: const Text(
-                    'Oeschinen Lake Campground',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                Text(
+                  'Oeschinen Lake Campground',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xffffffff),
                   ),
                 ),
                 Text(
                   'Kandersteg, Switzerland',
                   style: TextStyle(
-                    color: Colors.grey[500],
+                    color: Color(0xffcdcdcd),
                   ),
                 ),
               ],
@@ -50,19 +48,27 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    Color color = Theme.of(context).primaryColor;
-
-    Widget buttonSection = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        _buildButtonColumn(color, Icons.call, 'CALL'),
-        _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
-        _buildButtonColumn(color, Icons.share, 'SHARE'),
-      ],
+    Widget buttonSection = Container(
+      margin: EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Color(0xc4ffffff),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          SizedBox(width: 8),
+          _buildButtonColumn(Colors.blue, Icons.call, 'CALL'),
+          SizedBox(width: 8),
+          _buildButtonColumn(Colors.green, Icons.near_me, 'ROUTE'),
+          SizedBox(width: 8),
+          _buildButtonColumn(Colors.black, Icons.share, 'SHARE'),
+          SizedBox(width: 8),
+        ],
+      ),
     );
 
     Widget textSection = const Padding(
-      padding: EdgeInsets.all(32),
+      padding: EdgeInsets.all(16),
       child: Text(
         'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
         'Alps. Situated 1,578 meters above sea level, it is one of the '
@@ -71,26 +77,53 @@ class MyApp extends StatelessWidget {
         'lake, which warms to 20 degrees Celsius in the summer. Activities '
         'enjoyed here include rowing, and riding the summer toboggan run.',
         softWrap: true,
+        style: TextStyle(
+          color: Color(0xffffffff),
+        ),
       ),
     );
 
     return MaterialApp(
-      title: 'Flutter layout demo',
+      title: 'Flutter app',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter layout demo'),
+          title: const Text("Flutter app's by OD"),
         ),
-        body: ListView(
+        body: Stack(
+          //ListView
           children: [
             Image.network(
               'https://raw.githubusercontent.com/flutter/website/main/examples/layout/lakes/step5/images/lake.jpg',
               width: 600,
-              height: 240,
+              height: 400,
               fit: BoxFit.cover,
             ),
-            titleSection,
             buttonSection,
-            textSection,
+            Positioned(
+              top: 120,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: ListView(
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(8),
+                    padding: EdgeInsets.only(top: 8),
+                    decoration: BoxDecoration(
+                      color: Color(0x5f000000), // Колір фону
+                      borderRadius:
+                          BorderRadius.circular(20.0), // Закруглені кути
+                    ),
+                    child: Column(
+                      children: [
+                        titleSection,
+                        textSection,
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -104,7 +137,7 @@ class MyApp extends StatelessWidget {
       children: [
         Icon(icon, color: color),
         Container(
-          margin: const EdgeInsets.only(top: 8),
+          margin: const EdgeInsets.only(top: 16),
           child: Text(
             label,
             style: TextStyle(
