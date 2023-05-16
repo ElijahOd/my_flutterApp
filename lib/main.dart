@@ -43,15 +43,19 @@ class MyApp extends StatelessWidget {
             Icons.star,
             color: Colors.red[500],
           ),
-          const Text('41'),
+          const Text('41',
+            style: TextStyle(
+              color: Color(0xffcdcdcd)),
+          ),
         ],
       ),
     );
 
     Widget buttonSection = Container(
       margin: EdgeInsets.all(8),
+      padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: Color(0xc4ffffff),
+        color: Color(0x83ffffff),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -108,9 +112,9 @@ class MyApp extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.all(8),
-                    padding: EdgeInsets.only(top: 8),
+                    padding: EdgeInsets.only(top: 16),
                     decoration: BoxDecoration(
-                      color: Color(0x5f000000), // Колір фону
+                      color: Color(0xa4000000), // Колір фону
                       borderRadius:
                           BorderRadius.circular(20.0), // Закруглені кути
                     ),
