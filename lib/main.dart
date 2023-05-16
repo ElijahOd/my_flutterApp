@@ -43,9 +43,9 @@ class MyApp extends StatelessWidget {
             Icons.star,
             color: Colors.red[500],
           ),
-          const Text('41',
-            style: TextStyle(
-              color: Color(0xffcdcdcd)),
+          const Text(
+            '41',
+            style: TextStyle(color: Color(0xffcdcdcd)),
           ),
         ],
       ),
@@ -98,7 +98,7 @@ class MyApp extends StatelessWidget {
           children: [
             Image.network(
               'https://raw.githubusercontent.com/flutter/website/main/examples/layout/lakes/step5/images/lake.jpg',
-              width: 600,
+              width: double.infinity,
               height: 400,
               fit: BoxFit.cover,
             ),
