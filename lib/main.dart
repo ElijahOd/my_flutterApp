@@ -12,77 +12,82 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget titleSection = Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        children: [
-          Expanded(
-            /*1*/
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /*2*/
-                Text(
-                  'Oeschinen Lake Campground',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xffffffff),
-                  ),
+    Widget titleSection = Row(
+      children: [
+        Expanded(
+          /*1*/
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /*2*/
+              const Text(
+                'Oeschinen Lake Campground',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xffffffff),
                 ),
-                Text(
-                  'Kandersteg, Switzerland',
-                  style: TextStyle(
-                    color: Color(0xffcdcdcd),
-                  ),
+              ),
+              const Text(
+                'Kandersteg, Switzerland',
+                style: TextStyle(
+                  color: Color(0xffcdcdcd),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          /*3*/
-          Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-          const Text(
-            '41',
-            style: TextStyle(color: Color(0xffcdcdcd)),
-          ),
-        ],
-      ),
+        ),
+        /*3*/
+        Icon(
+          Icons.star,
+          color: Colors.red[500],
+        ),
+        const Text(
+          '41',
+          style: TextStyle(color: Color(0xffcdcdcd)),
+        ),
+      ],
     );
 
     Widget buttonSection = Container(
-      margin: EdgeInsets.all(8),
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Color(0x83ffffff),
-      ),
+      color: const Color(0xa1ffffff), // Білий колір фону
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          SizedBox(width: 8),
           _buildButtonColumn(Colors.blue, Icons.call, 'CALL'),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           _buildButtonColumn(Colors.green, Icons.near_me, 'ROUTE'),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           _buildButtonColumn(Colors.black, Icons.share, 'SHARE'),
-          SizedBox(width: 8),
         ],
       ),
     );
 
-    Widget textSection = const Padding(
-      padding: EdgeInsets.all(16),
-      child: Text(
-        'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
-        'Alps. Situated 1,578 meters above sea level, it is one of the '
-        'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
-        'half-hour walk through pastures and pine forest, leads you to the '
-        'lake, which warms to 20 degrees Celsius in the summer. Activities '
-        'enjoyed here include rowing, and riding the summer toboggan run.',
-        softWrap: true,
+    Widget textSection = const Text(
+      'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
+      'Alps. Situated 1,578 meters above sea level, it is one of the '
+      'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
+      'half-hour walk through pastures and pine forest, leads you to the '
+      'lake, which warms to 20 degrees Celsius in the summer. Activities '
+      'enjoyed here include rowing, and riding the summer toboggan run.',
+      softWrap: true,
+      style: TextStyle(
+        color: Color(0xffffffff),
+      ),
+    );
+
+    Widget numbPage = Container(
+      //padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+          color: const Color(0xcd000000), // Колір фону
+          borderRadius: BorderRadius.circular(50.0)),
+      width: 64.0, // Ширина фону
+      height: 64.0, // Закруглені кути
+      child: const Text(
+        '#1.',
         style: TextStyle(
+          fontWeight: FontWeight.bold,
           color: Color(0xffffffff),
+          fontSize: 22.0,
         ),
       ),
     );
@@ -99,28 +104,38 @@ class MyApp extends StatelessWidget {
             Image.network(
               'https://raw.githubusercontent.com/flutter/website/main/examples/layout/lakes/step5/images/lake.jpg',
               width: double.infinity,
-              height: 400,
+              height: 230,
               fit: BoxFit.cover,
             ),
-            buttonSection,
             Positioned(
-              top: 120,
+              top: 16,
+              left: 16,
+              child: (numbPage),
+            ),
+            Positioned(
+              top: 16,
+              right: 16,
+              child: (buttonSection),
+            ),
+            Positioned(
+              top: 130,
               left: 0,
               right: 0,
               bottom: 0,
               child: ListView(
                 children: [
                   Container(
-                    margin: EdgeInsets.all(8),
-                    padding: EdgeInsets.only(top: 16),
+                    margin: const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsets.all(32.0),
                     decoration: BoxDecoration(
-                      color: Color(0xa4000000), // Колір фону
+                      color: const Color(0xcd000000), // Колір фону
                       borderRadius:
                           BorderRadius.circular(20.0), // Закруглені кути
                     ),
                     child: Column(
                       children: [
                         titleSection,
+                        const SizedBox(height: 32),
                         textSection,
                       ],
                     ),
@@ -141,7 +156,7 @@ class MyApp extends StatelessWidget {
       children: [
         Icon(icon, color: color),
         Container(
-          margin: const EdgeInsets.only(top: 16),
+          margin: const EdgeInsets.only(top: 8),
           child: Text(
             label,
             style: TextStyle(
