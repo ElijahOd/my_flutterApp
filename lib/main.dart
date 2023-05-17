@@ -76,18 +76,20 @@ class MyApp extends StatelessWidget {
     );
 
     Widget numbPage = Container(
-      //padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
           color: const Color(0xcd000000), // Колір фону
           borderRadius: BorderRadius.circular(50.0)),
       width: 64.0, // Ширина фону
       height: 64.0, // Закруглені кути
-      child: const Text(
-        '#1.',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Color(0xffffffff),
-          fontSize: 22.0,
+      child: Align(
+        alignment: Alignment.center,
+        child: const Text(
+          '#0.',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color(0xffffffff),
+            fontSize: 22.0,
+          ),
         ),
       ),
     );
