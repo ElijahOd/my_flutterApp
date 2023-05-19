@@ -69,7 +69,7 @@ class CustomCard extends StatelessWidget {
     }
 
     Widget buttonSection = Container(
-      color: const Color(0xa1ffffff), // Білий колір фону
+      color: const Color(0xa1ffffff),
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Row(
         children: [
@@ -107,10 +107,10 @@ class CustomCard extends StatelessWidget {
           top: 16,
           left: 16,
           child: Container(
-            width: 64.0, // Ширина фону
-            height: 64.0, // Закруглені кути
+            width: 64.0,
+            height: 64.0,
             decoration: BoxDecoration(
-                color: const Color(0xcd000000), // Колір фону
+                color: const Color(0xcd000000),
                 borderRadius: BorderRadius.circular(50.0)),
             child: Center(
               child: Text(
