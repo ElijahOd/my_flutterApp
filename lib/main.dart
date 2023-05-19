@@ -59,7 +59,6 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ),
                   );
-
                   if (newCardInfo != null) {
                     updateCard(newCardInfo);
                   }
