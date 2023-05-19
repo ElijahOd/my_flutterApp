@@ -17,36 +17,25 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget titleSection = Row(
       children: [
-        Expanded(
-          /*1*/
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              /*2*/
-              GestureDetector(
-                onTap: onTap,
-                child: Tooltip(
-                  message: 'Edit title',
-                  child: Text(
-                    cardInfo.title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xffFDFDFD),
-                    ),
-                  ),
+        GestureDetector(
+          onTap: onTap,
+          child: Tooltip(
+            message: 'Edit title',
+            child: SizedBox(
+              width: 200,
+              height: 22,
+              child: Text(
+                cardInfo.title,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xffFDFDFD),
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
-                'Kandersteg, Switzerland',
-                style: TextStyle(
-                  color: Color(0xff777777),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
-        /*3*/
+        const Spacer(),
         Icon(
           Icons.star,
           color: Colors.red[500],
@@ -84,11 +73,11 @@ class CustomCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Row(
         children: [
-          _buildButtonColumn(Color(0xff4B96F3), Icons.call, 'CALL'),
+          _buildButtonColumn(const Color(0xff4B96F3), Icons.call, 'CALL'),
           const SizedBox(width: 8),
-          _buildButtonColumn(Color(0xff4CAF51), Icons.near_me, 'ROUTE'),
+          _buildButtonColumn(const Color(0xff4CAF51), Icons.near_me, 'ROUTE'),
           const SizedBox(width: 8),
-          _buildButtonColumn(Color(0xff000000), Icons.share, 'SHARE'),
+          _buildButtonColumn(const Color(0xff000000), Icons.share, 'SHARE'),
         ],
       ),
     );
