@@ -1,13 +1,16 @@
+// ignore_for_file: unused_import
 import 'package:flutter/material.dart';
-// ignore: unused_import
 import 'package:myflutterapp/main.dart';
+import 'package:myflutterapp/about.dart';
 
 class CustomCard extends StatelessWidget {
-  final int numbPage;
+  final CardInfo cardInfo;
+  final VoidCallback onTap;
 
   const CustomCard({
     Key? key,
-    required this.numbPage,
+    required this.cardInfo,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -20,11 +23,17 @@ class CustomCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               /*2*/
-              const Text(
-                'Oeschinen Lake Campground',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xffFDFDFD),
+              GestureDetector(
+                onTap: onTap,
+                child: Tooltip(
+                  message: 'Edit title',
+                  child: Text(
+                    cardInfo.title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xffFDFDFD),
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 8),
@@ -100,7 +109,7 @@ class CustomCard extends StatelessWidget {
     return Stack(
       children: [
         Image.network(
-          'https://raw.githubusercontent.com/flutter/website/main/examples/layout/lakes/step5/images/lake.jpg',
+          cardInfo.imageUrl,
           width: double.infinity,
           //height: 230,
           fit: BoxFit.cover,
@@ -116,8 +125,8 @@ class CustomCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(50.0)),
             child: Center(
               child: Text(
-                '#$numbPage.',
-                style: TextStyle(
+                '#${cardInfo.id + 1}.',
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Color(0xffFDFDFD),
                   fontSize: 20.0,
@@ -132,7 +141,7 @@ class CustomCard extends StatelessWidget {
           child: (buttonSection),
         ),
         Positioned(
-          top: 130,
+          top: 140,
           left: 0,
           right: 0,
           bottom: 0,
