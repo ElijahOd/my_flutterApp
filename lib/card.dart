@@ -140,8 +140,8 @@ class CustomCard extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 16.0),
                 padding: const EdgeInsets.all(32.0),
                 decoration: BoxDecoration(
-                  color: const Color(0xcd000000), // Колір фону
-                  borderRadius: BorderRadius.circular(20.0), // Закруглені кути
+                  color: const Color(0xcd000000),
+                  borderRadius: BorderRadius.circular(20.0),
                 ),
                 child: Column(
                   children: [
