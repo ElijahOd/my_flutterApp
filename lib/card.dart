@@ -1,7 +1,5 @@
-// ignore_for_file: unused_import
 import 'package:flutter/material.dart';
 import 'package:myflutterapp/main.dart';
-import 'package:myflutterapp/about.dart';
 
 class CustomCard extends StatelessWidget {
   final CardInfo cardInfo;
@@ -36,13 +34,19 @@ class CustomCard extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        Icon(
-          Icons.star,
-          color: Colors.red[500],
+        IconButton(
+          icon: Icon(
+            Icons.star,
+            color: Colors.red[500],
+          ),
+          onPressed: () {
+            cardInfo.star += 1;
+            (context as Element).markNeedsBuild();
+          },
         ),
-        const Text(
-          '41',
-          style: TextStyle(color: Color(0xffFDFDFD)),
+        Text(
+          '${cardInfo.star}',
+          style: const TextStyle(color: Color(0xffFDFDFD)),
         ),
       ],
     );
@@ -69,7 +73,7 @@ class CustomCard extends StatelessWidget {
     }
 
     Widget buttonSection = Container(
-      color: const Color(0xa1ffffff),
+      color: const Color(0xa1ffffff), // Білий колір фону
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Row(
         children: [
@@ -82,16 +86,17 @@ class CustomCard extends StatelessWidget {
       ),
     );
 
-    Widget textSection = const Text(
-      'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
-      'Alps. Situated 1,578 meters above sea level, it is one of the '
-      'larger Alpine Lakes. A gondola ride from Kandersteg, followed by a '
-      'half-hour walk through pastures and pine forest, leads you to the '
-      'lake, which warms to 20 degrees Celsius in the summer. Activities '
-      'enjoyed here include rowing, and riding the summer toboggan run.',
-      softWrap: true,
-      style: TextStyle(
-        color: Color(0xffFDFDFD),
+    Widget textSection = GestureDetector(
+      onTap: onTap,
+      child: Tooltip(
+        message: 'Edit description',
+        child: Text(
+          cardInfo.description,
+          softWrap: true,
+          style: const TextStyle(
+            color: Color(0xffFDFDFD),
+          ),
+        ),
       ),
     );
 
@@ -107,10 +112,10 @@ class CustomCard extends StatelessWidget {
           top: 16,
           left: 16,
           child: Container(
-            width: 64.0,
-            height: 64.0,
+            width: 64.0, // Ширина фону
+            height: 64.0, // Закруглені кути
             decoration: BoxDecoration(
-                color: const Color(0xcd000000),
+                color: const Color(0xcd000000), // Колір фону
                 borderRadius: BorderRadius.circular(50.0)),
             child: Center(
               child: Text(
@@ -140,8 +145,8 @@ class CustomCard extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 16.0),
                 padding: const EdgeInsets.all(32.0),
                 decoration: BoxDecoration(
-                  color: const Color(0xcd000000),
-                  borderRadius: BorderRadius.circular(20.0),
+                  color: const Color(0xcd000000), // Колір фону
+                  borderRadius: BorderRadius.circular(20.0), // Закруглені кути
                 ),
                 child: Column(
                   children: [
