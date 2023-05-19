@@ -1,7 +1,5 @@
-// ignore_for_file: unused_import
 import 'package:flutter/material.dart';
 import 'package:myflutterapp/main.dart';
-import 'package:myflutterapp/card.dart';
 
 class AboutPage extends StatefulWidget {
   final CardInfo cardInfo;
@@ -16,23 +14,29 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
-  late TextEditingController controller;
+  late TextEditingController controllerTitle;
+  late TextEditingController controllerDescription;
   late CardInfo cardInfoNew;
 
   @override
   void initState() {
     cardInfoNew = CardInfo(
       title: widget.cardInfo.title,
+      description: widget.cardInfo.description,
+      star: widget.cardInfo.star,
       id: widget.cardInfo.id,
       imageUrl: widget.cardInfo.imageUrl,
     );
-    controller = TextEditingController(text: cardInfoNew.title);
+    controllerTitle = TextEditingController(text: cardInfoNew.title);
+    controllerDescription =
+        TextEditingController(text: cardInfoNew.description);
 
     super.initState();
   }
 
   void save() {
-    cardInfoNew.title = controller.text;
+    cardInfoNew.title = controllerTitle.text;
+    cardInfoNew.description = controllerDescription.text;
   }
 
   @override
@@ -81,7 +85,9 @@ class _AboutPageState extends State<AboutPage> {
                       fit: BoxFit.cover,
                     ),
                     const SizedBox(height: 32),
-                    TextField(controller: controller),
+                    TextField(controller: controllerTitle),
+                    const SizedBox(height: 32),
+                    TextField(controller: controllerDescription),
                   ],
                 ),
                 const SizedBox(height: 32),
