@@ -1,4 +1,3 @@
-// ignore_for_file: unused_import
 import 'package:flutter/material.dart';
 import 'package:myflutterapp/card.dart';
 import 'package:myflutterapp/about.dart';
@@ -26,6 +25,8 @@ class _MyAppState extends State<MyApp> {
     for (int i = 0; i < 10; i++) {
       _listOfCard.add(CardInfo(
         title: 'Title ${i + 1}',
+        description: 'Description ${i + 1}',
+        star: 0,
         id: i,
       ));
     }
@@ -74,11 +75,15 @@ class _MyAppState extends State<MyApp> {
 
 class CardInfo {
   String title;
+  String description;
+  int star;
   final int id;
   final String imageUrl;
 
   CardInfo({
     required this.title,
+    required this.description,
+    required this.star,
     required this.id,
     this.imageUrl =
         'https://raw.githubusercontent.com/flutter/website/main/examples/layout/lakes/step5/images/lake.jpg',
